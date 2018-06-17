@@ -32,6 +32,8 @@ public class Practice06Duration extends LinearLayout {
         super(context, attrs, defStyleAttr);
     }
 
+    int type = 0;
+
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -65,6 +67,41 @@ public class Practice06Duration extends LinearLayout {
             @Override
             public void onClick(View v) {
                 // TODO 在这里处理点击事件，执行动画。记得使用 `setDuration(duration)` 来设置动画的时长。
+                switch (type) {
+                    case 0:
+                        imageView.animate()
+                                .setDuration(duration)
+                                .scaleX(1.5f);
+                        break;
+                    case 1:
+                        imageView.animate()
+                                .setDuration(duration)
+                                .scaleX(1);
+                        break;
+                    case 2:
+                        imageView.animate()
+                                .setDuration(duration)
+                                .scaleY(1.5f);
+                        break;
+                    case 3:
+                        imageView.animate()
+                                .setDuration(duration)
+                                .scaleY(1);
+                        break;
+                    case 4:
+                        imageView.animate()
+                                .setDuration(duration)
+                                .scaleX(1.5f)
+                                .scaleY(1.5f);
+                        break;
+                    case 5:
+                        imageView.animate()
+                                .setDuration(duration)
+                                .scaleX(1)
+                                .scaleY(1);
+                        break;
+                }
+                type = ++type % 6;
             }
         });
     }

@@ -34,6 +34,8 @@ public class Practice01Translation extends RelativeLayout {
         super(context, attrs, defStyleAttr);
     }
 
+    int type = 0;
+
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -46,9 +48,44 @@ public class Practice01Translation extends RelativeLayout {
         }
 
         animateBt.setOnClickListener(new OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(final View v) {
                 // TODO 在这里处理点击事件，通过 View.animate().translationX/Y/Z() 来让 View 平移
+                switch (type) {
+                    case 0:
+                        imageView.animate()
+                                .setDuration(500)
+                                .translationX(200);
+                        break;
+                    case 1:
+                        imageView.animate()
+                                .setDuration(500)
+                                .translationX(0);
+                        break;
+                    case 2:
+                        imageView.animate()
+                                .setDuration(500)
+                                .translationY(100);
+                        break;
+                    case 3:
+                        imageView.animate()
+                                .setDuration(500)
+                                .translationY(0);
+                        break;
+                    case 4:
+                        imageView.animate()
+                                .setDuration(500)
+                                .translationZ(20);
+                        break;
+                    case 5:
+                        imageView.animate()
+                                .setDuration(500)
+                                .translationZ(0);
+                        break;
+                }
+                type = ++type % 6;
+
             }
         });
     }
